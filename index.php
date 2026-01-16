@@ -79,7 +79,7 @@ include "koneksi.php";
           <a class="nav-link" href="#schedule">Schedule</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#about me">About Me</a>
+          <a class="nav-link" href="#about us">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.php" target="_blank">Login</a>
@@ -150,41 +150,50 @@ include "koneksi.php";
 <!-- article end -->
  
 <!-- gallery begin -->
-  <section id="gallery" class="text-center p-5" >
-    <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
+<section id="gallery" class="text-center p-5" >
+  <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
     <div class="container">
         <h1 class="fw-bold display-4 pb-3">gallery</h1>
-        
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="img/1.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="img/2.jpg" class="d-block w-100" alt="...">
-          </div>
-        <div class="carousel-item">
-          <img src="img/3.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="img/4.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="img/5.jpg" class="d-block w-100" alt="...">
-        </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    
+  <?php
+  $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+  $hasil = $conn->query($sql); 
+
+  while($row = $hasil->fetch_assoc()){
+  ?>    
+
+<!--col begin-->
+
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="img/<?= $row["gambar"]?>" class="d-block w-100" alt="...">
+      <div class="card-body">
+        <p class="card-text"><?= $row["deskripsi"]?></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-body-secondary"><?= $row["tanggal"]?></small>
+      </div>
+      </div>
+      
+<!--col ends-->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+
+  <?php
+  }
+  ?>
     </div>
+
     </div>
-    </div>
-  </section>
+  </div>
+</section>
 <!-- gallery end -->
 
 <!--Schedule begin-->
@@ -238,11 +247,11 @@ include "koneksi.php";
     </section>
 <!--Scedule end-->
 
-<!--aboutme begin-->
-<section id="about me" class="text-center p-5" >
+<!--aboutus begin-->
+<section id="about us" class="text-center p-5" >
     <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
     <div class="container">
-        <h1 class="fw-bold display-4 pb-3">About Me</h1>
+        <h1 class="fw-bold display-4 pb-3">About us</h1>
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
@@ -292,7 +301,7 @@ include "koneksi.php";
 </div>
 </div>
 </section>
-<!--aboutme end-->
+<!--aboutus end-->
 
 <!-- footer begin -->
   <footer class="text-center p-5">
