@@ -35,14 +35,14 @@ $user = mysqli_fetch_assoc($query);
     <?php if (!empty($user['foto'])) { ?>
         <img src="img/<?= $user['foto']; ?>"
              class="rounded-circle shadow"
-             width="200"
-             height="200"
+             width="150"
+             height="150"
              style="object-fit: cover;">
     <?php } else { ?>
         <img src="img/default.png"
              class="rounded-circle shadow"
-             width="150"
-             height="150">
+             width="100"
+             height="100">
     <?php } ?>
 </div>
 
